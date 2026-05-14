@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Filters from "../components/Filters";
 import ProductList from "../components/ProductList";
 import { fetchProducts } from "../services/api";
+import ProductModal from "../components/ProductModal/ProductModal";
 
 function CatalogPage() {
     const [products, setProducts] = useState([]);
@@ -13,9 +14,12 @@ function CatalogPage() {
         category: "all",
         sort: ""
     });
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     const observerRef = useRef(null);
     const fetchedPagesRef = useRef(new Set());
+
+    console.log(selectedProduct);
 
     useEffect(() => {
         loadProducts();
@@ -106,8 +110,15 @@ function CatalogPage() {
                 <ProductList
                     products={filteredProducts}
                     observerRef={observerRef}
+                    onProductClick={setSelectedProduct}
                 />
                 {loading && <p>Loading...</p>}
+                {selectedProduct && (
+                    <ProductModal
+                        product={selectedProduct}
+                        onClose={() => setSelectedProduct(null)}
+                    ></ProductModal>
+                )}
             </div>
         </div>
     );

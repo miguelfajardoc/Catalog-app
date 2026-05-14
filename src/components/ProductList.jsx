@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import ProductCard from "./ProductCard/ProductCard";
 import "./ProductList.css";
 
-function ProductList({ products, observerRef }) {
+function ProductList({ products, observerRef, onProductClick }) {
     
     console.log(products);
     return(
@@ -12,6 +12,7 @@ function ProductList({ products, observerRef }) {
                     <ProductCard
                         key={product.id}
                         product={product}
+                        onClick={() => onProductClick(product)}
                     />
                 ))}
             </div>

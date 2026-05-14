@@ -1,8 +1,8 @@
 import "./ProductCard.css";
 
-function ProductCard({ product }) {
+function ProductCard({ product, onClick }) {
     return (
-        <div className="product-card" onClick={()=> console.log("Clicked:", product)}>
+        <div className="product-card" onClick={onClick}>
             <img
                 src={product.image}
                 alt={product.title}
