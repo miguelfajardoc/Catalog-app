@@ -1,0 +1,71 @@
+.home-page {
+  min-height: 100vh;
+}
+
+.hero-section {
+  height: 70vh;
+
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+    ),
+    url("https://picsum.photos/1600/900");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.hero-overlay p {
+  font-size: 24px;
+}
+
+.categories-section {
+  padding: 64px 32px;
+}
+
+.categories-section h2 {
+  margin-bottom: 32px;
+  font-size: 36px;
+}
+
+.categories-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 24px;
+}
+
+.category-card {
+  height: 240px;
+
+  border-radius: 16px;
+
+  background: #f3f3f3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}

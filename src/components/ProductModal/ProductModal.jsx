@@ -1,7 +1,31 @@
 import "./ProductModal.css";
+import { useEffect, useState } from "react";
 
 function ProductModal({product, onClose}){
     if(!product) return null;
+
+    const [selectedImage, setSelectedImage] = useState(product.images[0]);
+
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        
+        return () => {
+            document.body.style.overflow = "auto";
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleEsc = (event) => {
+            if (event.key === "Escape") {
+                onClose();
+            }
+        };
+        window.addEventListener("keydown", handleEsc);
+
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+        };
+    }, [onClose]);
 
     return(
             <div className="modal-overlay" onClick={onClose}>
@@ -17,23 +41,38 @@ function ProductModal({product, onClose}){
                     </button>
 
                     <div className="modal-image-container">
-                    <img
-                        src={product.image}
-                        alt={product.title}
-                        className="modal-image"
-                    />
+                        <img
+                            src={selectedImage}
+                            alt={product.title}
+                            className="modal-image"
+                        />
+                        <div className="modal-thumbnails">
+                            {product.images.map((img, index) => (
+                                <img
+                                    key={index}
+                                    src={img}
+                                    alt={product.title}
+                                    className={`modal-thumbnail ${
+                                        selectedImage === img ? "active" : ""
+                                    }`}
+                                    onClick={() => setSelectedImage(img)}
+                                />
+                            ))}
+                        </div>
                     </div>
 
+
+
                     <div className="modal-info">
-                    <h2>{product.title}</h2>
+                        <h2>{product.title}</h2>
 
-                    <p className="modal-price">
-                        ${product.price}
-                    </p>
+                        <p className="modal-price">
+                            ${product.price}
+                        </p>
 
-                    <p className="modal-description">
-                        {product.description}
-                    </p>
+                        <p className="modal-description">
+                            {product.description}
+                        </p>
                     </div>
                 </div>
                 </div>

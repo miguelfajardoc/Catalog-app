@@ -3,8 +3,8 @@ const mockProducts = Array.from({ length: 50 }, (_, i) => ({
   id: globalid++,
   title: `Product ${globalid}`,
   price: Math.floor(Math.random() * 100) + 10,
-  category: ["Quesos", "Carnicos", "Embutidos", "Congelados", "Pan y mogolla"][i % 5],
-  image: `https://picsum.photos/200?random=${i + 1}`,
+  category: ["Quesos", "Carnicos", "Embutidos", "Congelados", "Pan y mogolla", "Salsas"][i % 6],
+  images: [`https://picsum.photos/200?random=${i + 1}`, `https://picsum.photos/200?random=${i + 51}`, `https://picsum.photos/200?random=${i + 101}`],
   description: "This is a sample product description",
 }));
 

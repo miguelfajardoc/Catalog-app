@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef, useMemo } from "react";
-import Header from "../components/Header";
-import Filters from "../components/Filters";
-import ProductList from "../components/ProductList";
-import { fetchProducts } from "../services/api";
-import ProductModal from "../components/ProductModal/ProductModal";
+import Header from "../../components/Header";
+import Filters from "../../components/Filters";
+import ProductList from "../../components/ProductList";
+import { fetchProducts } from "../../services/api";
+import ProductModal from "../../components/ProductModal/ProductModal";
 
 function CatalogPage() {
     const [products, setProducts] = useState([]);
